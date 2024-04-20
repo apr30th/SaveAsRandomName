@@ -1,0 +1,13 @@
+{
+    "manifest_version": 3,
+    "name": "Save As Random Name",
+    "version": "1.0",
+    "description": "tfile로 저장되는거 자동으로 랜덤으로 바꾸기",
+    "permissions": [
+        "downloads"
+    ],
+    "background": {
+        "service_worker": "background.js"
+    },
+    "manifest_version": 3
+}

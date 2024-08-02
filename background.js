@@ -10,6 +10,9 @@ chrome.downloads.onDeterminingFilename.addListener((downloadItem, suggest) => {
             newFilename = newFilename.split(specificString).join(randomString);
         }
     });
+    if (newFilename !== originalFilename) {
+        suggest({ filename: newFilename, conflictAction: 'uniquify' });
+    }
 });
 
 function generateRandomString(length) {

@@ -6,7 +6,7 @@ chrome.downloads.onDeterminingFilename.addListener((downloadItem, suggest) => {
 
     const randomString = generateRandomString(16);
 
-    if (originalFilename.includes(specificString1) or originalFilename.includes(specificString2) or originalFilename.includes(specificString3)) {
+    if (originalFilename.includes(specificString1) || originalFilename.includes(specificString2) || originalFilename.includes(specificString3)) {
         const newFilename = originalFilename.replace(specificString, randomString);
         suggest({ filename: newFilename, conflictAction: 'uniquify' });
     }

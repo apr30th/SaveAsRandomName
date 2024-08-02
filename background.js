@@ -1,15 +1,15 @@
 chrome.downloads.onDeterminingFilename.addListener((downloadItem, suggest) => {
     const originalFilename = downloadItem.filename;
-    const specificString1 = 'tfile';
-    const specificString2 = '다운로드';
-    const specificString3 = 'img';
+    const specificStrings = ['tfile', '다운로드', 'img'];
 
-    const randomString = generateRandomString(16);
+    let newFilename = originalFilename;
 
-    if (originalFilename.includes(specificString1) || originalFilename.includes(specificString2) || originalFilename.includes(specificString3)) {
-        const newFilename = originalFilename.replace(specificString, randomString);
-        suggest({ filename: newFilename, conflictAction: 'uniquify' });
-    }
+    specificStrings.forEach(specificString => {
+        if (newFilename.includes(specificString)) {
+            const randomString = generateRandomString(16);
+            newFilename = newFilename.split(specificString).join(randomString);
+        }
+    });
 });
 
 function generateRandomString(length) {
